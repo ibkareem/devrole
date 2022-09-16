@@ -18,6 +18,6 @@ driver.get("/verify", verifyDriverEmail);
 
 driver.post("/location", saveDriverLocation);
 
-driver.get('/nearby-cabs', getNearbyCabs)
+driver.post('/nearby-cabs', getNearbyCabs)
 
 module.exports = { driver };

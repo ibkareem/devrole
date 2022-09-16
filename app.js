@@ -2,7 +2,9 @@ const express = require("express");
 require("dotenv").config();
 const { driver } = require("./api/driver/driver-routes");
 const { connectDB } = require("./model/database-connector");
-connectDB()
+const { swaggerDocs } = require("./swagger");
+
+connectDB();
 
 const app = express();
 
@@ -12,4 +14,7 @@ app.use(express.json());
 
 app.use("/driver", driver);
 
-app.listen(port, () => console.log(`Cab server is running on Port: ${port}`));
+app.listen(port, () => {
+  console.log(`Cab server is running on Port: ${port}`);
+  swaggerDocs(app, port);
+});
